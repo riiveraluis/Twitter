@@ -23,4 +23,4 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![]https://github.com/riiveraluis/Twitter/blob/main/App%20gif/Part%201.gif
+![](https://github.com/riiveraluis/Twitter/blob/main/App%20gif/Part%201.gif)
