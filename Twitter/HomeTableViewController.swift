@@ -29,6 +29,11 @@ class HomeTableViewController: UITableViewController {
         self.dismiss(animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadTweets()
+    }
+    
     @objc func loadTweets() {
         let requestURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets = 20
@@ -88,6 +93,10 @@ class HomeTableViewController: UITableViewController {
         cell.userNameLabel.text = user["name"] as? String
         cell.tweetContentLabel.text = tweets[indexPath.row]["text"] as? String
         
+        cell.setFavorite(tweets[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweets[indexPath.row]["id"] as! Int
+        cell.setRetweeted(tweets[indexPath.row]["retweeted"] as! Bool)
+        
         return cell
     }
     
@@ -100,15 +109,4 @@ class HomeTableViewController: UITableViewController {
             loadMoreTweets()
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
